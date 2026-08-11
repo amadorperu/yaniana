@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="description" content="CYAM COMPANY S.A.C. — Consultoría, ingeniería, calidad, seguridad, servicios y logística desde Huancayo, Junín." />
+  <title>CYAM COMPANY S.A.C. | Ingeniería, Consultoría y Servicios</title>
+
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --surface:#111111;
+      --surface-2:#171717;
+      --card:#ffffff;
+      --text:#f6f6f6;
+      --muted:#b7b7b7;
+      --ink:#121212;
+      --ink-muted:#5b5b5b;
+      --yellow:#ffd400;
+      --yellow-2:#f5c800;
+      --line:rgba(255,255,255,.12);
+      --line-dark:rgba(0,0,0,.10);
+      --shadow:0 18px 55px rgba(0,0,0,.22);
+      --radius:22px;
+      --radius-sm:14px;
+      --container:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:#f4f4f2;
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,textarea,select{font:inherit}
+    img,svg{display:block;max-width:100%}
+    button{cursor:pointer}
+    .container{width:min(100% - 32px,var(--container));margin-inline:auto}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:.77rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    }
+    .eyebrow::before{content:"";width:26px;height:3px;background:var(--yellow)}
+    .section{padding:72px 0}
+    .section-title{
+      margin:12px 0 14px;
+      font-size:clamp(2rem,7vw,4.6rem);
+      line-height:.98;
+      letter-spacing:-.045em;
+      max-width:900px;
+    }
+    .section-lead{max-width:760px;margin:0;color:#5d5d5d;font-size:1.05rem}
+    .text-yellow{color:var(--yellow)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:48px;padding:0 20px;border-radius:999px;border:1px solid transparent;
+      font-weight:800;transition:.25s ease;
+    }
+    .btn-primary{background:var(--yellow);color:#111}
+    .btn-primary:hover{transform:translateY(-2px);background:#ffe15a}
+    .btn-dark{background:#111;color:#fff}
+    .btn-dark:hover{transform:translateY(-2px);background:#242424}
+    .btn-outline{border-color:rgba(255,255,255,.35);color:#fff;background:transparent}
+    .btn-outline:hover{background:#fff;color:#111}
+    .arrow{width:17px;height:17px}
+
+    /* NAV */
+    .topbar{
+      position:fixed;inset:0 0 auto 0;z-index:50;
+      background:rgba(8,8,8,.78);backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      transition:.25s;
+    }
+    .topbar.scrolled{background:rgba(8,8,8,.94)}
+    .nav{
+      min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:18px;
+    }
+    .brand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:900;letter-spacing:-.02em}
+    .brand-mark{
+      width:42px;height:42px;border-radius:10px;background:var(--yellow);color:#111;
+      display:grid;place-items:center;font-weight:1000;letter-spacing:-.08em;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);
+    }
+    .brand small{display:block;font-size:.63rem;color:#aaa;letter-spacing:.12em;text-transform:uppercase;margin-top:1px}
+    .nav-links{display:none}
+    .nav-cta{display:none}
+    .menu-btn{
+      width:46px;height:46px;border-radius:12px;border:1px solid var(--line);
+      background:#151515;color:#fff;display:grid;place-items:center;
+    }
+    .mobile-menu{
+      display:none;padding:0 16px 18px;background:#0b0b0b;color:#fff;border-top:1px solid var(--line)
+    }
+    .mobile-menu.open{display:grid}
+    .mobile-menu a{padding:15px 2px;border-bottom:1px solid var(--line);font-weight:700}
+    .mobile-menu .btn{margin-top:14px;border-bottom:0}
+
+    /* HERO */
+    .hero{
+      min-height:100svh;
+      padding:120px 0 54px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(255,212,0,.16), transparent 30%),
+        linear-gradient(180deg,#0d0d0d 0%,#0b0b0b 100%);
+      color:#fff;position:relative;isolation:isolate;overflow:hidden;
+    }
+    .hero::after{
+      content:"";position:absolute;inset:auto -12vw -17vw auto;width:58vw;height:58vw;
+      background:var(--yellow);transform:rotate(18deg);opacity:.05;z-index:-1;
+    }
+    .hero-grid{display:grid;gap:38px;align-items:center}
+    .hero h1{
+      font-size:clamp(3.2rem,14vw,7.2rem);
+      line-height:.86;letter-spacing:-.065em;margin:20px 0 22px;max-width:880px;
+    }
+    .hero p{color:#c8c8c8;font-size:1.08rem;max-width:680px;margin:0 0 28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-card{
+      border:1px solid var(--line);border-radius:var(--radius);
+      min-height:420px;position:relative;overflow:hidden;
+      background:
+        linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015)),
+        #121212;
+      box-shadow:var(--shadow);
+    }
+    .hero-card::before{
+      content:"";position:absolute;left:-10%;bottom:-12%;width:68%;height:82%;
+      background:var(--yellow);clip-path:polygon(0 0,100% 14%,82% 100%,8% 88%);
+      opacity:.95;
+    }
+    .hero-card::after{
+      content:"";position:absolute;right:-7%;top:8%;width:53%;height:76%;
+      border:2px solid rgba(255,212,0,.48);clip-path:polygon(12% 0,100% 8%,86% 100%,0 86%);
+    }
+    .industrial-visual{
+      position:absolute;inset:0;display:grid;place-items:center;z-index:2;padding:38px;
+    }
+    .machine{
+      width:min(88%,420px);aspect-ratio:1.08;position:relative;filter:drop-shadow(0 28px 35px rgba(0,0,0,.45));
+    }
+    .machine .frame{position:absolute;left:17%;bottom:25%;width:64%;height:34%;background:#2c2c2c;border-radius:8px 14px 6px 6px}
+    .machine .cab{position:absolute;left:50%;bottom:51%;width:26%;height:27%;background:#202020;border:3px solid #444;clip-path:polygon(10% 0,92% 8%,100% 100%,0 100%)}
+    .machine .window{position:absolute;left:55%;bottom:58%;width:16%;height:13%;background:#c5d6da;opacity:.85;clip-path:polygon(8% 0,88% 8%,100% 100%,0 100%)}
+    .machine .bed{position:absolute;left:10%;bottom:45%;width:43%;height:24%;background:#3b3b3b;clip-path:polygon(0 0,100% 10%,82% 100%,10% 88%)}
+    .machine .accent{position:absolute;left:17%;bottom:38%;width:57%;height:12%;background:var(--yellow)}
+    .wheel{position:absolute;bottom:14%;width:27%;aspect-ratio:1;border-radius:50%;background:#111;border:9px solid #2d2d2d;box-shadow:inset 0 0 0 5px #111}
+    .wheel::after{content:"";position:absolute;inset:32%;border-radius:50%;background:#6e6e6e}
+    .wheel.w1{left:14%}.wheel.w2{right:10%}
+    .hero-badge{
+      position:absolute;left:18px;top:18px;z-index:4;
+      background:rgba(7,7,7,.78);border:1px solid var(--line);backdrop-filter:blur(10px);
+      border-radius:999px;padding:9px 12px;color:#fff;font-size:.75rem;font-weight:800;
+    }
+    .hero-note{
+      position:absolute;right:16px;bottom:16px;z-index:4;background:#fff;color:#111;
+      padding:14px 16px;border-radius:14px;max-width:210px;font-size:.82rem;font-weight:800;
+    }
+    .hero-note span{display:block;color:#777;font-weight:600;margin-top:4px}
+
+    /* QUICK PROOF */
+    .quick-strip{background:var(--yellow);border-top:1px solid rgba(0,0,0,.07);border-bottom:1px solid rgba(0,0,0,.07)}
+    .quick-grid{display:grid;grid-template-columns:1fr 1fr}
+    .quick-item{padding:22px 16px;border-right:1px solid rgba(0,0,0,.12)}
+    .quick-item:nth-child(even){border-right:0}
+    .quick-item strong{display:block;font-size:1.2rem;letter-spacing:-.03em}
+    .quick-item span{font-size:.82rem;color:#4b4300}
+
+    /* ABOUT */
+    .about-grid{display:grid;gap:30px}
+    .about-panel{
+      background:#111;color:#fff;border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;
+    }
+    .about-panel::after{content:"CYAM";position:absolute;right:-10px;bottom:-32px;font-size:8rem;font-weight:1000;color:rgba(255,255,255,.04);letter-spacing:-.08em}
+    .about-panel p{color:#c7c7c7;margin:16px 0 0;font-size:1.02rem;position:relative;z-index:2}
+    .about-list{display:grid;gap:12px}
+    .about-row{
+      display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+      padding:18px 0;border-bottom:1px solid var(--line-dark)
+    }
+    .about-row:last-child{border-bottom:0}
+    .num{font-size:.85rem;font-weight:900;color:#b99c00}
+    .about-row strong{display:block;font-size:1.03rem}
+    .about-row span{display:block;color:#686868;margin-top:4px;font-size:.92rem}
+
+    /* SERVICES */
+    .services{background:#fff}
+    .service-grid{display:grid;gap:14px;margin-top:34px}
+    .service-card{
+      min-height:265px;background:#f3f3f0;border:1px solid #e4e4e0;border-radius:18px;padding:24px;
+      display:flex;flex-direction:column;justify-content:space-between;transition:.25s ease;position:relative;overflow:hidden;
+    }
+    .service-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.08);border-color:#dad7c5}
+    .service-card .icon{
+      width:54px;height:54px;border-radius:14px;background:#111;color:var(--yellow);display:grid;place-items:center
+    }
+    .service-card h3{font-size:1.28rem;line-height:1.1;margin:30px 0 8px}
+    .service-card p{margin:0;color:#666;font-size:.94rem}
+    .service-card::after{content:"";position:absolute;right:-38px;bottom:-38px;width:110px;height:110px;border:22px solid rgba(255,212,0,.16);border-radius:50%}
+
+    /* ECOSYSTEM */
+    .ecosystem{background:#0c0c0c;color:#fff}
+    .eco-grid{display:grid;gap:30px}
+    .eco-intro{background:var(--yellow);color:#111;border-radius:var(--radius);padding:32px}
+    .eco-intro .section-title{font-size:clamp(2.7rem,11vw,5.3rem);margin-top:8px}
+    .eco-intro p{max-width:520px;color:#4c4200}
+    .eco-items{display:grid;gap:10px}
+    .eco-item{
+      border:1px solid var(--line);border-radius:16px;padding:20px;display:grid;grid-template-columns:auto 1fr;gap:16px;
+      background:#121212;transition:.25s ease;
+    }
+    .eco-item:hover{background:#171717;border-color:rgba(255,212,0,.35)}
+    .eco-item .n{font-size:1.4rem;font-weight:1000;color:var(--yellow);letter-spacing:-.05em}
+    .eco-item h4{margin:0 0 6px;font-size:1.08rem}
+    .eco-item p{margin:0;color:#aaa;font-size:.9rem}
+
+    /* PROCESS */
+    .process-grid{display:grid;gap:14px;margin-top:30px}
+    .process-step{
+      padding:24px;border-radius:16px;background:#fff;border:1px solid #e1e1dd;
+    }
+    .process-step .step{font-size:.77rem;font-weight:900;letter-spacing:.08em;color:#7d6e00}
+    .process-step h3{margin:10px 0 8px;font-size:1.2rem}
+    .process-step p{margin:0;color:#666;font-size:.93rem}
+
+    /* CTA */
+    .cta-wrap{
+      background:#111;color:#fff;border-radius:28px;padding:34px;display:grid;gap:28px;align-items:center;
+      position:relative;overflow:hidden;
+    }
+    .cta-wrap::after{content:"";position:absolute;right:-90px;top:-90px;width:260px;height:260px;background:var(--yellow);border-radius:50%;opacity:.14}
+    .cta-wrap h2{font-size:clamp(2.3rem,9vw,4.8rem);line-height:.96;letter-spacing:-.05em;margin:0}
+    .cta-wrap p{margin:16px 0 0;color:#bcbcbc;max-width:650px}
+    .cta-actions{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:2}
+
+    /* CONTACT */
+    .contact-grid{display:grid;gap:24px}
+    .contact-card{background:#fff;border:1px solid #e3e3df;border-radius:20px;padding:26px}
+    .contact-card h3{font-size:1.5rem;margin:0 0 14px}
+    .contact-line{padding:14px 0;border-bottom:1px solid #ededeb}
+    .contact-line:last-child{border-bottom:0}
+    .contact-line span{display:block;color:#777;font-size:.8rem}
+    .contact-line strong{display:block;margin-top:3px;font-size:.98rem;word-break:break-word}
+    .form-grid{display:grid;gap:12px}
+    .field label{display:block;font-size:.8rem;font-weight:800;margin-bottom:6px}
+    .field input,.field textarea,.field select{
+      width:100%;border:1px solid #d8d8d4;border-radius:12px;padding:13px 14px;background:#fafafa;color:#111;outline:none
+    }
+    .field textarea{min-height:120px;resize:vertical}
+    .field input:focus,.field textarea:focus,.field select:focus{border-color:#a48a00;box-shadow:0 0 0 3px rgba(255,212,0,.18)}
+
+    /* FOOTER */
+    footer{background:#080808;color:#fff;padding:42px 0 26px}
+    .footer-grid{display:grid;gap:26px}
+    .footer-copy{color:#9d9d9d;max-width:560px;font-size:.9rem;margin-top:15px}
+    .footer-links{display:grid;gap:10px}
+    .footer-links a{color:#cfcfcf;font-size:.9rem}
+    .footer-bottom{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:#777;font-size:.8rem}
+
+    /* WHATSAPP */
+    .wa-float{
+      position:fixed;right:18px;bottom:18px;z-index:60;
+      width:58px;height:58px;border-radius:50%;
+      background:#25D366;color:#fff;display:grid;place-items:center;
+      box-shadow:0 16px 35px rgba(0,0,0,.28);transition:.2s ease;
+    }
+    .wa-float:hover{transform:translateY(-3px) scale(1.02)}
+    .wa-float::after{
+      content:"WhatsApp";position:absolute;right:68px;background:#111;color:#fff;
+      padding:8px 10px;border-radius:8px;font-size:.75rem;font-weight:800;opacity:0;pointer-events:none;transform:translateX(6px);transition:.2s
+    }
+    .wa-float:hover::after{opacity:1;transform:translateX(0)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(20px);transition:.65s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media (min-width:720px){
+      .section{padding:92px 0}
+      .quick-grid{grid-template-columns:repeat(4,1fr)}
+      .quick-item{padding:25px 20px}.quick-item:nth-child(even){border-right:1px solid rgba(0,0,0,.12)}.quick-item:last-child{border-right:0}
+      .service-grid{grid-template-columns:repeat(2,1fr)}
+      .process-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:.8fr 1.2fr}
+      .cta-wrap{grid-template-columns:1.35fr .65fr;padding:48px}
+      .footer-grid{grid-template-columns:1.4fr .6fr}
+    }
+    @media (min-width:960px){
+      .nav-links{display:flex;align-items:center;gap:26px;color:#cfcfcf;font-size:.9rem;font-weight:700}
+      .nav-links a:hover{color:#fff}
+      .nav-cta{display:inline-flex}
+      .menu-btn,.mobile-menu{display:none!important}
+      .hero{padding-top:138px}
+      .hero-grid{grid-template-columns:1.15fr .85fr;gap:52px}
+      .hero-card{min-height:570px}
+      .about-grid{grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+      .about-panel{padding:38px}
+      .service-grid{grid-template-columns:repeat(3,1fr)}
+      .eco-grid{grid-template-columns:.9fr 1.1fr;gap:34px}
+      .process-grid{grid-template-columns:repeat(4,1fr)}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar" id="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="CYAM Company inicio">
+        <span class="brand-mark">CY</span>
+        <span>CYAM COMPANY <small>Ingeniería & Servicios</small></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#ecosistema">Soluciones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a class="btn btn-primary nav-cta" href="https://wa.me/51986671248?text=Hola%20CYAM%20COMPANY%2C%20quisiera%20solicitar%20informaci%C3%B3n." target="_blank" rel="noopener">
+        Solicitar información
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#ecosistema">Soluciones</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-primary" href="https://wa.me/51986671248?text=Hola%20CYAM%20COMPANY%2C%20quisiera%20solicitar%20informaci%C3%B3n." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Huancayo · Junín · Perú</span>
+          <h1>Soluciones que <span class="text-yellow">integran</span> industria.</h1>
+          <p>
+            CYAM COMPANY S.A.C. integra consultoría, ingeniería, calidad, seguridad,
+            servicios y logística para acompañar requerimientos empresariales desde una sola plataforma de atención.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#servicios">
+              Ver servicios
+              <svg class="arrow" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-outline" href="#contacto">Contactar</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal" aria-label="Visual industrial">
+          <div class="hero-badge">Ingeniería · Minería · Logística</div>
+          <div class="industrial-visual">
+            <div class="machine" aria-hidden="true">
+              <div class="bed"></div>
+              <div class="frame"></div>
+              <div class="cab"></div>
+              <div class="window"></div>
+              <div class="accent"></div>
+              <div class="wheel w1"></div>
+              <div class="wheel w2"></div>
+            </div>
+          </div>
+          <div class="hero-note">Capacidad multiservicio <span>Consultoría, ejecución, suministro y soporte.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-strip" aria-label="Resumen CYAM">
+      <div class="container quick-grid">
+        <div class="quick-item"><strong>Huancayo</strong><span>Origen y sede empresarial</span></div>
+        <div class="quick-item"><strong>Ingeniería</strong><span>Obras, arquitectura y consultoría</span></div>
+        <div class="quick-item"><strong>Calidad & SST</strong><span>Implementación y asesoría</span></div>
+        <div class="quick-item"><strong>Logística</strong><span>Transporte, equipos y suministros</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="nosotros">
+      <div class="container about-grid">
+        <article class="about-panel reveal">
+          <span class="eyebrow">Quiénes somos</span>
+          <h2 class="section-title">Un solo socio para múltiples necesidades.</h2>
+          <p>
+            CYAM COMPANY S.A.C. nace en Huancayo, Junín, con el objetivo de ser un socio estratégico
+            que integre consultoría, ingeniería, calidad, seguridad, servicios y logística en un solo lugar.
+          </p>
+        </article>
+
+        <div class="about-list reveal">
+          <div class="about-row">
+            <div class="num">01</div>
+            <div><strong>Visión integral</strong><span>Articulamos especialidades técnicas y operativas dentro de una misma propuesta de servicio.</span></div>
+          </div>
+          <div class="about-row">
+            <div class="num">02</div>
+            <div><strong>Enfoque industrial</strong><span>Servicios vinculados con construcción, minería, laboratorios, seguridad, suministros, transporte y soporte empresarial.</span></div>
+          </div>
+          <div class="about-row">
+            <div class="num">03</div>
+            <div><strong>Atención adaptable</strong><span>La estructura de servicios permite atender necesidades puntuales o soluciones combinadas según cada requerimiento.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="servicios">
+      <div class="container">
+        <span class="eyebrow">Líneas de servicio</span>
+        <h2 class="section-title">Capacidades para operar, construir y mejorar.</h2>
+        <p class="section-lead">Portafolio organizado a partir de las actividades declaradas por la empresa y presentado en una arquitectura comercial más clara.</p>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="icon">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-7h6v7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><h3>Ingeniería y construcción</h3><p>Obras de ingeniería civil, edificaciones, carreteras, puentes, arquitectura, consultoría y actividades conexas.</p></div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M9 3h6M10 3v5l-5.5 9.5A2.3 2.3 0 0 0 6.5 21h11a2.3 2.3 0 0 0 2-3.5L14 8V3M7.5 15h9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><h3>Minería y laboratorios</h3><p>Consultoría minera, técnicas analíticas, diseño e implementación de laboratorios químicos, muestreo y determinaciones técnicas.</p></div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V7l8-4Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m8.5 12 2.2 2.2L15.8 9" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><h3>Calidad, seguridad y SST</h3><p>Consultoría, asesoría e implementación en seguridad y salud en el trabajo y apoyo en aseguramiento de la calidad para laboratorios.</p></div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7zM7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+            </div>
+            <div><h3>Logística y transporte</h3><p>Transporte de carga por vía terrestre, transporte de residuos sólidos, transporte de pasajeros y soporte logístico asociado.</p></div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M4 7h16v12H4zM7 7V5h10v2M8 11h8M8 15h5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><h3>Suministros y materiales</h3><p>Materiales de construcción, ferretería, insumos para laboratorios, implementos de seguridad y otros suministros empresariales.</p></div>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon">
+              <svg width="27" height="27" viewBox="0 0 24 24" fill="none"><path d="M5 17h14M7 17V9h10v8M9 9l1-4h4l1 4M6 21h12" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><h3>Equipos y servicios industriales</h3><p>Alquiler de maquinaria, equipos, bienes tangibles y vehículos, además de fabricación de productos metálicos para uso estructural.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ecosystem" id="ecosistema">
+      <div class="container eco-grid">
+        <div class="eco-intro reveal">
+          <span class="eyebrow">Modelo de atención</span>
+          <h2 class="section-title">Ecosistema CYAM</h2>
+          <p>Una forma ordenada de conectar diagnóstico, especialidad técnica, ejecución y soporte operativo según el alcance de cada servicio.</p>
+          <a class="btn btn-dark" style="margin-top:18px" href="#contacto">Conversemos</a>
+        </div>
+
+        <div class="eco-items">
+          <article class="eco-item reveal"><div class="n">01</div><div><h4>Diagnóstico del requerimiento</h4><p>Identificación del alcance, condiciones técnicas, prioridades y recursos necesarios.</p></div></article>
+          <article class="eco-item reveal"><div class="n">02</div><div><h4>Diseño de la solución</h4><p>Integración de consultoría, ingeniería, seguridad, logística o suministros según corresponda.</p></div></article>
+          <article class="eco-item reveal"><div class="n">03</div><div><h4>Ejecución y coordinación</h4><p>Organización de actividades y entregables bajo una lógica de servicio centralizada.</p></div></article>
+          <article class="eco-item reveal"><div class="n">04</div><div><h4>Seguimiento y soporte</h4><p>Comunicación con el cliente para acompañar el cierre y necesidades posteriores del servicio.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2 class="section-title">De la necesidad a una solución ejecutable.</h2>
+        <div class="process-grid">
+          <article class="process-step reveal"><div class="step">ETAPA 01</div><h3>Escuchar</h3><p>Entendemos el requerimiento, el contexto y el resultado esperado.</p></article>
+          <article class="process-step reveal"><div class="step">ETAPA 02</div><h3>Definir</h3><p>Organizamos alcance, especialidades, recursos y entregables.</p></article>
+          <article class="process-step reveal"><div class="step">ETAPA 03</div><h3>Ejecutar</h3><p>Coordinamos el servicio con foco técnico y operativo.</p></article>
+          <article class="process-step reveal"><div class="step">ETAPA 04</div><h3>Acompañar</h3><p>Mantenemos comunicación para seguimiento y cierre.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-wrap reveal">
+          <div>
+            <h2>¿Tienes un requerimiento técnico u operativo?</h2>
+            <p>Cuéntanos qué necesitas y organiza tu consulta con CYAM COMPANY S.A.C. mediante WhatsApp o correo electrónico.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="https://wa.me/51986671248?text=Hola%20CYAM%20COMPANY%2C%20tengo%20un%20requerimiento%20y%20quisiera%20cotizarlo." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+            <a class="btn btn-outline" href="mailto:yannina.aguilar@cyamcompany.com">Enviar correo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container contact-grid">
+        <aside class="contact-card reveal">
+          <span class="eyebrow">Contacto</span>
+          <h3>Hablemos de tu proyecto</h3>
+          <div class="contact-line"><span>WhatsApp</span><strong>+51 986 671 248</strong></div>
+          <div class="contact-line"><span>Correo</span><strong>yannina.aguilar@cyamcompany.com</strong></div>
+          <div class="contact-line"><span>Ubicación</span><strong>Huancayo, Junín, Perú</strong></div>
+        </aside>
+
+        <form class="contact-card reveal" id="contactForm">
+          <h3>Solicitar información</h3>
+          <div class="form-grid">
+            <div class="field"><label for="name">Nombre / Empresa</label><input id="name" name="name" type="text" required placeholder="Ej. Empresa ABC" /></div>
+            <div class="field"><label for="service">Servicio de interés</label>
+              <select id="service" name="service" required>
+                <option value="">Selecciona una opción</option>
+                <option>Ingeniería y construcción</option>
+                <option>Minería y laboratorios</option>
+                <option>Calidad, seguridad y SST</option>
+                <option>Logística y transporte</option>
+                <option>Suministros y materiales</option>
+                <option>Equipos y servicios industriales</option>
+                <option>Otro requerimiento</option>
+              </select>
+            </div>
+            <div class="field"><label for="message">Cuéntanos brevemente qué necesitas</label><textarea id="message" name="message" required placeholder="Describe el requerimiento, ubicación y alcance aproximado."></textarea></div>
+            <button class="btn btn-dark" type="submit">Enviar consulta por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#inicio">
+            <span class="brand-mark">CY</span>
+            <span>CYAM COMPANY <small>Ingeniería & Servicios</small></span>
+          </a>
+          <p class="footer-copy">Consultoría, ingeniería, calidad, seguridad, servicios y logística con base en Huancayo, Junín.</p>
+        </div>
+        <nav class="footer-links" aria-label="Enlaces de pie">
+          <a href="#nosotros">Nosotros</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#ecosistema">Soluciones</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> CYAM COMPANY S.A.C.</span>
+        <span>Huancayo · Junín · Perú</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/51986671248?text=Hola%20CYAM%20COMPANY%2C%20quisiera%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg width="29" height="29" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.45L3.5 20.5l1.44-4.27A8.5 8.5 0 1 1 20.5 11.6Z" fill="currentColor"/>
+      <path d="M8.1 7.6c.2-.45.42-.46.64-.47h.55c.17 0 .4.06.52.38l.74 1.8c.1.25.05.45-.08.64l-.55.68c-.15.17-.2.32-.08.54.52.95 1.25 1.77 2.13 2.4.22.16.4.14.57-.05l.78-.91c.18-.2.38-.25.62-.16l1.7.8c.27.12.45.19.52.31.07.12.07.72-.17 1.15-.23.43-1.4 1.35-1.98 1.41-.51.05-1.16.08-2.2-.35-1.3-.54-2.34-1.25-3.3-2.18-1.2-1.16-2.08-2.52-2.39-3.66-.23-.85-.03-1.59.17-2.03.12-.27.32-.53.51-.76.07-.09.19-.26.3-.54Z" fill="#25D366"/>
+    </svg>
+  </a>
+
+  <script>
+    const topbar = document.getElementById('topbar');
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const year = document.getElementById('year');
+    const contactForm = document.getElementById('contactForm');
+
+    year.textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', () => {
+      topbar.classList.toggle('scrolled', window.scrollY > 24);
+    });
+
+    menuBtn.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+
+      const text =
+        `Hola CYAM COMPANY, soy ${name}.%0A%0A` +
+        `Servicio de interés: ${service}.%0A` +
+        `Requerimiento: ${message}%0A%0A` +
+        `Quisiera recibir información y/o una cotización.`;
+
+      window.open(`https://wa.me/51986671248?text=${encodeURI(text)}`, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>
